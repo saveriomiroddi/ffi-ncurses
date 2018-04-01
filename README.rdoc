@@ -1,4 +1,8 @@
-= ffi-ncurses
+= ffi-ncurses2
+
++NOTE+: the original project ("ffi-ncurses") is now abandoned; this
+project ("ffi-ncurses2") contains fixes for running on modern (2.x) Ruby
+versions, and with the gem "multi_progress_bar2".
 
 Author: Sean O'Halpin
 
