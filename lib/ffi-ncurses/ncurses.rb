@@ -81,6 +81,19 @@ module Ncurses
       # log(:mm, 1, name)
       name = name.to_s
       if name[0,2] == "mv"
+        # This is a hack-fix to make the library work with `multi_progressbar`. The code in this
+        # method is a bit confusing.
+        # First, it's not clear if trying to add `w` to `mvwin` is correct - it seems not.
+        # Second, it's not clear which project the code is copied from ("Lifted from Ncurses"),
+        # since in the top-level ncurses library:
+        # (https://github.com/eclubb/ncurses-ruby/blob/0d15ede5a05ec5bc6e6f42fb2cb76fedadf5d554/lib/ncurses.rb#L62)
+        # the code is different.
+        #
+        if name == "mvwin"
+          FFI::NCurses.send(name, @win, *args)
+          return
+        end
+
         # log(:mm, 2, "mv")
         test_name = name.dup
         test_name[2,0] = "w" # insert "w" after"mv"
@@ -88,7 +101,7 @@ module Ncurses
           # log(:mm, 2.1, test_name)
           Ncurses.send(test_name, @win, *args)
         else
-          super
+          super(name.to_sym, *args)
         end
       else
         # log(:mm, 3, "w")
@@ -100,7 +113,7 @@ module Ncurses
           # log(:mm, 5, name)
           Ncurses.send(name, @win, *args)
         else
-          super
+          super(name.to_sym, *args)
         end
       end
     end
