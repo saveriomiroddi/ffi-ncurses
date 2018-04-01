@@ -1,7 +1,7 @@
 module FFI
   module NCurses
-    NAME    = "ffi-ncurses"
-    VERSION = "0.4.0"
+    NAME    = "ffi-ncurses2"
+    VERSION = "0.4.1"
   end
 end
 
