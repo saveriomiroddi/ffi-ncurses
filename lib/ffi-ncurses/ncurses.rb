@@ -88,7 +88,7 @@ module Ncurses
           # log(:mm, 2.1, test_name)
           Ncurses.send(test_name, @win, *args)
         else
-          super
+          super(name.to_sym, *args)
         end
       else
         # log(:mm, 3, "w")
@@ -100,7 +100,7 @@ module Ncurses
           # log(:mm, 5, name)
           Ncurses.send(name, @win, *args)
         else
-          super
+          super(name.to_sym, *args)
         end
       end
     end
