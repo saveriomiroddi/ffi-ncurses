@@ -1,8 +1,10 @@
 = ffi-ncurses2
 
-+NOTE+: the original project ("ffi-ncurses") is now abandoned; this
-project ("ffi-ncurses2") contains fixes for running on modern (2.x) Ruby
-versions, and with the gem "multi_progress_bar2".
++NOTE+: this project is a fork with fixes of the abandoned +ffi-curses+,
+used as stopgap for making the +multi_progress_bar2+ project work while
+converting it to use the +curses+ library. Since the conversion is
+completed, and +ffi-ncurses+ is abandoned and obsolete (modern projects
+should use the +curses+ library), this project is considered closed.
 
 Author: Sean O'Halpin
 
